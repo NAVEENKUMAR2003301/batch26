@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div class="title">
+        
+    </div>
+
+    <div class="error2"></div>
+
+    
+    <script>
+
+        let Api = "https://fakestoreapi.com/products/"
+
+        fetch(Api)
+        .then((data)=>{
+
+            return data.json()
+            
+
+        })
+
+        .then((js1)=>{
+
+            js1.forEach((c,i,t)=>{
+
+                console.log(c);
+                
+                
+
+                let title = document.querySelector(".title") // html tag select
+
+                
+
+                let all = document.createElement("div")   // dynamic tag
+
+                all.innerHTML = `<h1>${c.title}</h1>
+                <img src=${c.image}/>`
+
+                title.append(all)
+
+                
+                
+
+            })
+           
+            
+
+        })
+
+        .catch((error1) => {
+
+    let errorDiv = document.querySelector(".error2") 
+
+    console.log(error1);
+
+    if (errorDiv) {
+        let allError = document.createElement("div") // dynamic tags
+        allError.innerHTML = `<h2>${error1}</h2>`    // give the tags inside error value
+        errorDiv.append(allError) // one tag inside another tag given
+    }
+
+})
+
+
+
+    </script>
+</body>
+</html>
